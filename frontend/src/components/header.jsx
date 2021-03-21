@@ -9,7 +9,7 @@ class Header extends Component {
         const isUserStaff = UserServiceApi.isUserStaff();
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/">Car Share</Navbar.Brand>
+                <Navbar.Brand href="/">Uber Bus</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="container-fluid">
@@ -32,8 +32,8 @@ class Header extends Component {
                     <Nav>
                         {!isUserLoggedIn &&
                             <>
-                                <Nav.Link href="/signup">Sign Up</Nav.Link>
-                                <Nav.Link href="/login">Log in</Nav.Link>
+                                <Nav.Link href="/signup">Signup</Nav.Link>
+                                <Nav.Link href="/login">Login</Nav.Link>
                             </>
                         }
                     </Nav>

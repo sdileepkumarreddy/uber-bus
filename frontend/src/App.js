@@ -10,7 +10,6 @@ import UserServiceApi from './api/UserServiceApi';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import StaffRoute from './StaffRoute.jsx'
 import LocationShowPage from './components/locationShow';
-import Footer from './components/footer';
 import FilterCarsPage from './components/bookingComponents/filterCars';
 import BookingDashboard from './components/bookingComponents/bookingDashboard';
 import MyBookingPage from './components/bookingComponents/myBookings';
@@ -39,14 +38,14 @@ import './App.css';
 
 class App extends Component {
   state = {
-    availableCars: [],
+    availableBuses: [],
     pickupTime: "",
     returnTime: ""
   };
 
-  updateCars(availableCars, pickupTime, returnTime) {
+  updateCars(availableBuses, pickupTime, returnTime) {
     this.setState({
-      availableCars: availableCars,
+      availableBuses: availableBuses,
       pickupTime: pickupTime,
       returnTime: returnTime
     });
@@ -59,7 +58,7 @@ class App extends Component {
   }
 
   render() {
-    const { availableCars, pickupTime, returnTime } = this.state;
+    const { availableBuses, pickupTime, returnTime } = this.state;
     const isUserStaff = UserServiceApi.isUserStaff();
     return (
       <Router>
@@ -72,7 +71,7 @@ class App extends Component {
           <Route path="/locations" component={MapContainer} />
           {/* Customers only routes */}
           {!isUserStaff && <AuthenticatedRoute path="/filter" component={(props) => <FilterCarsPage {...props}
-            availableCars={availableCars}
+            availableBuses={availableBuses}
             pickupTime={pickupTime}
             returnTime={returnTime} />} />}
           {!isUserStaff && <AuthenticatedRoute path="/dashboard" component={(props) => <BookingDashboard {...props}
@@ -97,7 +96,6 @@ class App extends Component {
           <StaffRoute path="/admin/view/location/:id" component={ViewLocation} />
           <StaffRoute path="/admin/view/location" component={ViewAllLocations} />
         </Switch>
-        <Footer />
       </Router>
     );
   }

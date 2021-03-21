@@ -10,6 +10,7 @@ const bookingSchema = mongoose.Schema({
     returntime: { type: Date, required: true },
     cost: { type: Number, required: true },
     location: { type: mongoose.Schema.Types.ObjectId, ref: "Location", required: true },
+    destination: {type: mongoose.Schema.Types.ObjectId, ref: "Destination", required: true},
     status: { type: String, required: true }
 });
 

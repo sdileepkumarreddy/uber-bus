@@ -4,7 +4,7 @@ const Car = require('../models/car')
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
-const selectFields = '_id user car bookedtime pickuptime returntime cost location status';
+const selectFields = '_id user car bookedtime pickuptime returntime cost location destination status';
 
 /* CONTROLLERS WITH JWT GUARDING */
 // create a booking for customers
@@ -46,6 +46,7 @@ exports.create_booking = (req, res, next) => {
                     pickuptime: pickupTime,
                     returntime: returnTime,
                     cost: cost.toFixed(2),
+                    destination: req.body.destination,
                     location: req.body.location,
                     status: "Confirmed"
                 });
@@ -99,6 +100,7 @@ exports.get_all_bookings = (req, res, next) => {
                                 pickuptime: booking.pickuptime,
                                 returntime: booking.returntime,
                                 cost: booking.cost,
+                                destination: booking.destination,
                                 location: booking.location,
                                 status: booking.status
                             }
@@ -148,6 +150,7 @@ exports.get_user_bookings = (req, res, next) => {
                             pickuptime: booking.pickuptime,
                             returntime: booking.returntime,
                             cost: booking.cost,
+                            destination: booking.destination,
                             location: booking.location,
                             status: booking.status
                         }
@@ -186,6 +189,7 @@ exports.get_user_booking = (req, res, next) => {
             .exec()
             .then(booking => {
                 // wrap and return booking in response
+                console.log(booking);
                 const response = {
                     booking: booking
                 }

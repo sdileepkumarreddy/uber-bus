@@ -1,37 +1,51 @@
 /* Bookings confirm details page */
 import React, { Component } from 'react';
-import { Col, Button, Alert } from 'react-bootstrap';
+import { Form, Col, Button, Alert, Container } from 'react-bootstrap';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import BookingServiceApi from '../../api/BookingServiceApi';
 import UserServiceApi from '../../api/UserServiceApi';
 import LocationServiceApi from '../../api/LocationServiceApi';
 
 class BookingConfirmDetailsPopUp extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
             errorMessage: '',
             location: {},
+            destination:'',
+            destinations: [],
             activeMarker: {},
             showingInfoWindow: false,
             selectedPlace: {},
-            isLoading: false
+            isLoading: false,
         };
         this.handleConfirmButton = this.handleConfirmButton.bind(this);
         this.handleCancelButton = this.handleCancelButton.bind(this);
+    }
+
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleConfirmButton = event => {
         // prevent browser from refreshing on click
         event.preventDefault();
         // generate new booking object
+
+        console.log(this.state.destination);
+
         let newBooking = {
             pickupTime: this.props.pickupTime,
             returnTime: this.props.returnTime,
             user: UserServiceApi.getLoggedInUserID(),
             car: this.props.car._id,
+            destination: this.state.destination,
             location: this.props.car.location,
         };
+
+        console.log(newBooking);
+
         // publish create booking request to backend
         BookingServiceApi.createBooking(newBooking)
             .then(res => {
@@ -74,6 +88,22 @@ class BookingConfirmDetailsPopUp extends Component {
                         })
                     });
             });
+
+        // obtain all destinations
+        let destinationArray = this.state.destinations;
+        let defaultDestination = this.state.destination;
+        LocationServiceApi.getAllLocations().then(res => {
+            res.data.forEach(location => {
+                let locationObject = {
+                    id: location._id,
+                    address: location.address,
+                    name: location.name
+                }
+                destinationArray.push(locationObject);
+            });
+            defaultDestination = destinationArray[0].id;
+            this.setState({destination: defaultDestination});
+        });
     }
 
     mapOnMarkerClick = (props, marker) =>
@@ -172,6 +202,20 @@ class BookingConfirmDetailsPopUp extends Component {
                     <a href={"/locations/" + car.locationId}><strong>Garage Location:</strong> {car.location}</a>
                 </div>
             </Col>
+
+            <Container>
+                <Form.Group controlId="exampleForm.ControlSelect2">
+                    <Form.Label>Destination</Form.Label>
+                    <Form.Control name="destination" as="select"  onChange={this.handleChange}>
+                           
+                            {this.state.destinations.map(destination =>
+                                <>
+                                    <option value={destination.id} defaultValue={destination.id}>{destination.name + " @ " + destination.address}</option>
+                                </>
+                            )}
+                    </Form.Control>
+                </Form.Group>
+            </Container>
             <Button variant="success" onClick={this.handleConfirmButton}>Confirm</Button>
             <Button variant="danger" onClick={this.handleCancelButton}>Cancel</Button>
         </div>);

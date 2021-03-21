@@ -12,6 +12,7 @@ class MyBookingPage extends Component {
         this.state = {
             bookings: [],
             locations: [],
+            destinations: [],
             cars: [],
             errorMessage: ''
         };
@@ -26,14 +27,23 @@ class MyBookingPage extends Component {
         LocationServiceApi.getAllLocations()
             .then(res => {
                 let locationArray = this.state.locations;
+                let destinationArray = this.state.destinations;
                 res.data.forEach(location => {
                     let locationObject = {
                         id: location._id,
                         address: location.address,
                         name: location.name
                     };
+                    let destinationObject = {
+                        id: location._id,
+                        address: location.address,
+                        name: location.name
+                    }
                     locationArray.push(locationObject);
+                    destinationArray.push(destinationObject);
+
                     this.setState({ locations: locationArray });
+                    this.setState({destinations: destinationArray});
                 });
             }).catch((error) => {
                 this.setState({ errorMessage: error.response.data.message });
@@ -96,11 +106,13 @@ class MyBookingPage extends Component {
                             <th>Booked Time</th>
                             <th>Pickup Time</th>
                             <th>Return Time</th>
-                            <th>Car</th>
+                            <th>Bus</th>
                             <th>Cost</th>
                             <th>Location</th>
                             <th>Address</th>
+                            <th>Destination</th>
                             <th>Status</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -140,6 +152,17 @@ class MyBookingPage extends Component {
                                             {location.id === booking.location &&
                                                 <>
                                                     {location.address}
+                                                </>
+                                            }
+                                        </>
+                                    )}
+                                </td>
+                                <td>
+                                    {this.state.destinations.map(destination =>
+                                        <>
+                                            {destination.id === booking.destination &&
+                                                <>
+                                                    {destination.address}
                                                 </>
                                             }
                                         </>

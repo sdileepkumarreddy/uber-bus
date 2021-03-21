@@ -81,7 +81,7 @@ class ViewLocation extends Component {
             <Container>
                 {this.state.successMessage &&
                     <Alert variant="success">
-                        <Alert.Heading>Add car succeed!</Alert.Heading>
+                        <Alert.Heading>Add bus succeed!</Alert.Heading>
                         <p>
                             {this.state.successMessage}
                         </p>
@@ -138,7 +138,7 @@ class ViewLocation extends Component {
                         </Map>
                     </div>}
                 </Container>
-                <h2>Cars here:</h2>
+                <h2>Buses here:</h2>
                 <Row>
                     {this.state.cars.length !== 0 ? this.state.cars.map(car =>
                         <CarDescriptionComponent car={car} />
@@ -160,7 +160,7 @@ function CarDescriptionComponent(props) {
                 <p>{car.fueltype}, {car.bodytype}, {car.seats} seaters, {car.colour}</p>
                 <h5>${car.costperhour} per hour</h5>
                 <h5>Number Plate: {car.numberplate}</h5>
-                <a href={`/admin/view/cars/${car._id}`}><b>Car ID: </b>{car._id}</a>
+                <a href={`/admin/view/cars/${car._id}`}><b>Bus ID: </b>{car._id}</a>
             </div>
         </Col>
     );

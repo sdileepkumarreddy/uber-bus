@@ -22,67 +22,17 @@ export default class Overview extends Component {
                             <Col>
                                 <div className="how-it-works">
                                     <h3>Book</h3>
-                                    <p>Checkout your nearest cars <a href="/locations">here</a>, then head over to dashboard, pick a time range to get started!</p>
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="how-it-works">
-                                    <h3>Unlock</h3>
-                                    <p>Go up to the car on your time of choice and unlock the car.</p>
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="how-it-works">
-                                    <h3>Drive</h3>
-                                    <p>Enjoy driving your car</p>
+                                    <p>Checkout your nearest buses <a href="/locations">here</a>, then head over to dashboard, pick a time range to get started!</p>
                                 </div>
                             </Col>
                         </Row>
-                        <div className="benefits-div">
-                            <h2>Benefits</h2>
-                            <p>
-                                MZA Car Share gives you access to cars 24/7 without the hassle of owning one.
-                                You can rent a car from just $13 an hour, with fuel, insurance and Roadside assistance included.
-                            </p>
-                            <Row>
-                                <Col>
-                                    <div className="benefits-white-cards">
-                                        <FontAwesomeIcon icon={faPiggyBank} size="3x" />
-                                        <h3>Signing Up is Free</h3>
-                                        <p>Nothing to lose by joining. 100% Free!</p>
-                                    </div>
-                                </Col>
-                                <Col>
-                                    <div className="benefits-white-cards">
-                                        <FontAwesomeIcon icon={faMoneyBill} size="3x" />
-                                        <h3>No Membership Fee</h3>
-                                        <p>You only pay for the car's rent</p>
-                                    </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <div className="benefits-white-cards">
-                                        <FontAwesomeIcon icon={faCar} size="3x" />
-                                        <h3>Cheaper than owning a car</h3>
-                                        <p>Much more ecomonic than buying and maintaing a car</p>
-                                    </div>
-                                </Col>
-                                <Col>
-                                    <div className="benefits-white-cards">
-                                        <FontAwesomeIcon icon={faPhone} size="3x" />
-                                        <h3>Roadside Assistance</h3>
-                                        <p>Easily get in touch with one of our assistance if you have any issues on the road</p>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
+            
                         <Row>
                         </Row>
                     </Container>
                     <div className="find-nearest-car-div">
-                        <h2>Find your nearest MZA Car Share Garage</h2>
-                        <p>Our cars are spread all over Melbourne. There's probably one near you</p>
+                        <h2>Find your nearest bus</h2>
+                        <p>Our buses are spread all over United States. There's probably one near you</p>
                         <div>
                             <Button href="/locations">Check out our locations</Button>
                         </div>

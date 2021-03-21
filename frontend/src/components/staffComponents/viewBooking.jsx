@@ -160,7 +160,7 @@ class ViewBookingPage extends Component {
                                 <p>{this.state.car.fueltype}, {this.state.car.bodytype}, {this.state.car.seats} seaters, {this.state.car.colour}</p>
                                 <h5>${this.state.car.costperhour} per hour</h5>
                                 <h5>Number Plate: {this.state.car.numberplate}</h5>
-                                <a href={`/admin/view/cars/${this.state.car._id}`}><b>Car ID: </b>{this.state.car._id}</a>
+                                <a href={`/admin/view/cars/${this.state.car._id}`}><b>Bus ID: </b>{this.state.car._id}</a>
                             </div>
                         </Col>
                     </>

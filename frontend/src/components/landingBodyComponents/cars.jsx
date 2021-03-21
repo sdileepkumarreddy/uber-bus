@@ -1,6 +1,6 @@
 /* Cars component in landing page */
 import React, { Component } from 'react'
-import CarServiceApi from '../../api/CarServiceApi.js';
+import BusServiceApi from '../../api/CarServiceApi.js';
 import LocationServiceApi from '../../api/LocationServiceApi.js';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import '../../styles/cars.css';
@@ -15,7 +15,7 @@ export default class Cars extends Component {
 
     componentDidMount() {
         // obtain all cars
-        CarServiceApi.getAllCars().then(res => {
+        BusServiceApi.getAllCars().then(res => {
             res.data.cars.forEach(car => {
                 LocationServiceApi.getLocationFromId(car.location).then(res => {
                     car.location = res.data.name
@@ -33,7 +33,7 @@ export default class Cars extends Component {
         return (
             <section className="section-item">
                 <div>
-                    <h2>Our cars</h2>
+                    <h2>Our buses</h2>
                     <Container fluid>
                         <Row>
                             {
@@ -44,8 +44,8 @@ export default class Cars extends Component {
                     </Container>
                 </div>
                 <div className="find-nearest-car-div">
-                    <h2>Find your nearest MZA Car Share Garage</h2>
-                    <p>Our cars are spread all over Melbourne. There's probably one near you</p>
+                    <h2>Find your nearest bus</h2>
+                    <p>Our buses are spread all over United States. There's probably one near you</p>
                     <div>
                         <Button href="/locations">Check out our locations</Button>
                     </div>

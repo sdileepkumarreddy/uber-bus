@@ -134,10 +134,10 @@ export default class createCar extends Component {
     render() {
         return (
             <div className="container">
-                <h2>Create Car</h2>
+                <h2>Create Bus</h2>
                 {this.state.errMsg &&
                     <Alert variant="danger">
-                        <Alert.Heading>Add car failed!</Alert.Heading>
+                        <Alert.Heading>Add bus failed!</Alert.Heading>
                         <p>
                             {this.state.errMsg}
                         </p>
@@ -146,7 +146,7 @@ export default class createCar extends Component {
 
                 {this.state.successMsg &&
                     <Alert variant="success">
-                        <Alert.Heading>Add car succeed!</Alert.Heading>
+                        <Alert.Heading>Add bus succeed!</Alert.Heading>
                         <p>
                             {this.state.successMsg}
                         </p>
@@ -158,7 +158,7 @@ export default class createCar extends Component {
                             Make
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control name="make" type="make" placeholder="Car Make" onChange={this.handleChange} required />
+                            <Form.Control name="make" type="make" placeholder="Bus Make" onChange={this.handleChange} required />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formHorizontalSeats">
@@ -258,7 +258,7 @@ export default class createCar extends Component {
                         <Col sm={10}>
                             <Form.File
                                 id="custom-file"
-                                label="Car Image (4MB max)"
+                                label="Bus Image (4MB max)"
                                 name="b64photo"
                                 accept="image/*"
                                 onChange={this.handleFile}
@@ -267,7 +267,7 @@ export default class createCar extends Component {
                     </Form.Group>
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
-                            <Button onClick={this.handleSubmit} disabled={this.state.disableSubmit}>Create Car</Button>
+                            <Button onClick={this.handleSubmit} disabled={this.state.disableSubmit}>Create Bus</Button>
                         </Col>
                     </Form.Group>
                 </Form>
