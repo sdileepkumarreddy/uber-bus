@@ -7,6 +7,7 @@ We use Terraform script to provision the VM and configured this application for 
 # Technical Stack
    - Frontend: ReactJS
    - Backend: NodeJS
+   - Webserver: Nginx
    - Database: MongoDB
    - Cloud: AWS EC2
    - Automation script: Terraform
