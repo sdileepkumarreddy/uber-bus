@@ -177,7 +177,7 @@ class FilterCarsPage extends Component {
 
                     <Form.Group as={Row}>
                         <Col >
-                            <Button type="submit">Filter Cars</Button>
+                            <Button type="submit">Filter Buses</Button>
                         </Col>
                     </Form.Group>
                 </Form>

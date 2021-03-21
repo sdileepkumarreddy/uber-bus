@@ -14,8 +14,8 @@ class LandingPage extends Component {
             <>
                 <Container id="landing-page" fluid>
                     <div id="catchphrase">
-                        <h1>MZA Car Share Melbourne</h1>
-                        <h4>You don't need to own a car to drive one</h4>
+                        <h1>Uber Bus</h1>
+                        <h4>There is a driver waiting for you</h4>
 
                         {(isUserLoggedIn && !isUserStaff) &&
                             <>

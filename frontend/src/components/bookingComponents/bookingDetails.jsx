@@ -11,6 +11,7 @@ class BookingDetailsPage extends Component {
         super(props);
         this.state = {
             location: {},
+            destination: {},
             booking: {},
             car: {},
             errorMessage: '',
@@ -57,6 +58,25 @@ class BookingDetailsPage extends Component {
                                 });
                             });
                     });
+                LocationServiceApi.getLocationFromId(this.state.booking.destination)
+                    .then(res =>{
+                        LocationServiceApi.getGeocodeFromAddress(res.data.address)
+                           .then(newRes => {
+                               let destinationObject = {
+                                   id: res.data._id,
+                                   address: res.data.name,
+                                   name: res.data.name,
+                                   lat: newRes.data.results[0].geometry.location.lat,
+                                   lng: newRes.data.results[0].geometry.location.lng,
+                                   cars: res.data.cars
+                               };
+
+                               this.setState({
+                                   destination: destinationObject,
+                                   isLoading: true
+                               });
+                           });
+                    })
             }).catch((error) => {
                 this.setState({ errorMessage: error.response.data.message });
             })
@@ -151,6 +171,7 @@ class BookingDetailsPage extends Component {
                         <b>Return time: </b> {this.state.booking.returntime} <br></br>
                         <b>Cost: </b> ${this.state.booking.cost} <br></br>
                         <b>Location: </b> {this.state.location.name} <br></br>
+                        <b>Destination: </b>{this.state.destination.name} <br></br>
                         <b>Address: </b> {this.state.location.address} <br></br>
                         <b>Status: </b> {this.state.booking.status} <br></br>
                         {(this.state.booking.status === "Confirmed" && this.checkBookingPast(this.state.booking.pickuptime)) &&
@@ -162,7 +183,7 @@ class BookingDetailsPage extends Component {
                                 <h2 style={{ marginTop: '1vh' }}>{this.state.car.make}</h2>
                                 <p>{this.state.car.fueltype}, {this.state.car.bodytype}, {this.state.car.seats} seaters, {this.state.car.colour}</p>
                                 <h5>Number Plate: {this.state.car.numberplate}</h5>
-                                <p><b>Car ID: </b>{this.state.car._id}</p>
+                                <p><b>Bus ID: </b>{this.state.car._id}</p>
                             </div>
                         </Col>
                     </>

@@ -214,13 +214,13 @@ class BookingDashboard extends Component {
                                     <h2 style={{ marginTop: '1vh' }}>{this.state.car.make}</h2>
                                     <p>{this.state.car.fueltype}, {this.state.car.bodytype}, {this.state.car.seats} seaters, {this.state.car.colour}</p>
                                     <h5>Number Plate: {this.state.car.numberplate}</h5>
-                                    <p><b>Car ID: </b>{this.state.car._id}</p>
+                                    <p><b>Bus ID: </b>{this.state.car._id}</p>
                                 </div>
                             </Col>
                         </Container>
                     </div>
                 }
-                <h2>Let's find you a car!</h2>
+                <h2>Let's find you a bus!</h2>
                 {this.state.errorMessage && <Alert variant="danger">
                     <Alert.Heading>Error checking availability!</Alert.Heading>
                     <p>

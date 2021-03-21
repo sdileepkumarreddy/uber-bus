@@ -34,10 +34,7 @@ export default class landingBody extends Component {
                         <Nav.Link className="nav-link">Overview</Nav.Link>
                     </Nav.Item>
                     <Nav.Item onClick={this.handleClick.bind(this)} style={(component === "Cars") ? navWhenSelectedStyle : {}}>
-                        <Nav.Link className="nav-link">Cars</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item onClick={this.handleClick.bind(this)} style={(component === "FAQs") ? navWhenSelectedStyle : {}}>
-                        <Nav.Link className="nav-link">FAQs</Nav.Link>
+                        <Nav.Link className="nav-link">Bus</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 <RenderCorrectComponents component={this.state.component} />
@@ -52,7 +49,7 @@ function RenderCorrectComponents(props) {
     switch(component) {
         case "Overview":
             return(<Overview />);
-        case "Cars":
+        case "Bus":
             return(<Cars />);
         case "FAQs":
             return(<Faqs />);
