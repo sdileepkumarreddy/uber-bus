@@ -24,7 +24,7 @@ class modifyLocationPage extends Component {
 
     initMap = () => {
         this.setState({
-          gmapsLoaded: true,
+            gmapsLoaded: true,
         });
     }
 
@@ -54,7 +54,7 @@ class modifyLocationPage extends Component {
     handleSubmit() {
         // modify location object handler
         // input validation
-        if(this.state.name === '') {
+        if (this.state.name === '') {
             this.setState({
                 errMsg: "name can't be empty"
             });
@@ -64,7 +64,7 @@ class modifyLocationPage extends Component {
         this.setState({
             disableSubmit: true
         });
-        
+
         // create modified location object
         let location = {
             _id: this.state.location._id,
@@ -75,7 +75,7 @@ class modifyLocationPage extends Component {
 
         // publish modified location object to backend
         LocationServiceApi.updateLocation(location).then(res => {
-            this.props.history.push(`/admin/view/location/${location._id}`, {success: "Successfully updated location"});
+            this.props.history.push(`/admin/view/location/${location._id}`, { success: "Successfully updated location" });
         }).catch(err => {
             this.setState({
                 errMsg: err.response.data.message,
@@ -86,7 +86,7 @@ class modifyLocationPage extends Component {
     }
 
     handleChange = event => {
-        this.setState({[event.target.name] : event.target.value});
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     render() {
@@ -94,8 +94,8 @@ class modifyLocationPage extends Component {
             <Container>
                 <h2>Modify Location Details</h2>
                 <strong>Location ID:</strong> {this.state.location._id} <br></br>
-                
-                {this.state.errMsg && 
+
+                {this.state.errMsg &&
                     <Alert variant="danger">
                         <Alert.Heading>Modify location failed!</Alert.Heading>
                         <p>
@@ -110,7 +110,7 @@ class modifyLocationPage extends Component {
                             Name
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control name="name" type="text" value={this.state.name} onChange={this.handleChange} required/>
+                            <Form.Control name="name" type="text" value={this.state.name} onChange={this.handleChange} required />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formHorizontalName">
@@ -118,47 +118,47 @@ class modifyLocationPage extends Component {
                             Enter Address
                         </Form.Label>
                         <Col sm={10}>
-                        { this.state.gmapsLoaded &&
-                            <PlacesAutocomplete
-                                value={this.state.address}
-                                onChange={this.handleAutocomplete}
-                                onSelect={this.handleSelect}
-                            >
-                                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                                <div>
-                                    <Form.Control
-                                    {...getInputProps({
-                                        placeholder: 'Search Places ...',
-                                        className: 'location-search-input',
-                                        required: true
-                                    })}
-                                    />
-                                    <div className="autocomplete-dropdown-container">
-                                    {loading && <div>Loading...</div>}
-                                    {suggestions.map(suggestion => {
-                                        const className = suggestion.active
-                                        ? 'suggestion-item--active'
-                                        : 'suggestion-item';
-                                        // inline style for demonstration purpose
-                                        const style = suggestion.active
-                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                                        return (
-                                        <div
-                                            {...getSuggestionItemProps(suggestion, {
-                                            className,
-                                            style,
-                                            })}
-                                        >
-                                            <span>{suggestion.description}</span>
+                            {this.state.gmapsLoaded &&
+                                <PlacesAutocomplete
+                                    value={this.state.address}
+                                    onChange={this.handleAutocomplete}
+                                    onSelect={this.handleSelect}
+                                >
+                                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                        <div>
+                                            <Form.Control
+                                                {...getInputProps({
+                                                    placeholder: 'Search Places ...',
+                                                    className: 'location-search-input',
+                                                    required: true
+                                                })}
+                                            />
+                                            <div className="autocomplete-dropdown-container">
+                                                {loading && <div>Loading...</div>}
+                                                {suggestions.map(suggestion => {
+                                                    const className = suggestion.active
+                                                        ? 'suggestion-item--active'
+                                                        : 'suggestion-item';
+                                                    // inline style for demonstration purpose
+                                                    const style = suggestion.active
+                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                    return (
+                                                        <div
+                                                            {...getSuggestionItemProps(suggestion, {
+                                                                className,
+                                                                style,
+                                                            })}
+                                                        >
+                                                            <span>{suggestion.description}</span>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
                                         </div>
-                                        );
-                                    })}
-                                    </div>
-                                </div>
-                                )}
-                            </PlacesAutocomplete>
-                        }
+                                    )}
+                                </PlacesAutocomplete>
+                            }
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}>

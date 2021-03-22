@@ -15,19 +15,19 @@ class Header extends Component {
                     <Nav className="container-fluid">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/locations">Locations</Nav.Link>
-                    {isUserLoggedIn &&
-                        <>
-                            {!isUserStaff && <Nav.Link href="/myprofile">My Profile</Nav.Link>}
-                            {!isUserStaff && <Nav.Link href="/mybookings">My Bookings</Nav.Link>}
-                            {!isUserStaff && <Nav.Link href="/dashboard">Dashboard</Nav.Link>}
-                            {isUserStaff && <Nav.Link href="/staff">Staff Dashboard</Nav.Link>}
-                        </>
-                    }
-                    {isUserLoggedIn &&
-                        <NavItem className="ml-auto">
-                            <Nav.Link onClick={UserServiceApi.logout}>Logout</Nav.Link>
-                        </NavItem>
-                    }
+                        {isUserLoggedIn &&
+                            <>
+                                {!isUserStaff && <Nav.Link href="/myprofile">My Profile</Nav.Link>}
+                                {!isUserStaff && <Nav.Link href="/mybookings">My Bookings</Nav.Link>}
+                                {!isUserStaff && <Nav.Link href="/dashboard">Dashboard</Nav.Link>}
+                                {isUserStaff && <Nav.Link href="/staff">Staff Dashboard</Nav.Link>}
+                            </>
+                        }
+                        {isUserLoggedIn &&
+                            <NavItem className="ml-auto">
+                                <Nav.Link onClick={UserServiceApi.logout}>Logout</Nav.Link>
+                            </NavItem>
+                        }
                     </Nav>
                     <Nav>
                         {!isUserLoggedIn &&
@@ -37,7 +37,7 @@ class Header extends Component {
                             </>
                         }
                     </Nav>
-               </Navbar.Collapse>
+                </Navbar.Collapse>
             </Navbar>
         )
     }
