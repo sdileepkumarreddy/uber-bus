@@ -26,7 +26,7 @@ export default class Overview extends Component {
                                 </div>
                             </Col>
                         </Row>
-            
+
                         <Row>
                         </Row>
                     </Container>

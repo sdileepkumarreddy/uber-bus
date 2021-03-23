@@ -59,23 +59,23 @@ class BookingDetailsPage extends Component {
                             });
                     });
                 LocationServiceApi.getLocationFromId(this.state.booking.destination)
-                    .then(res =>{
+                    .then(res => {
                         LocationServiceApi.getGeocodeFromAddress(res.data.address)
-                           .then(newRes => {
-                               let destinationObject = {
-                                   id: res.data._id,
-                                   address: res.data.name,
-                                   name: res.data.name,
-                                   lat: newRes.data.results[0].geometry.location.lat,
-                                   lng: newRes.data.results[0].geometry.location.lng,
-                                   cars: res.data.cars
-                               };
+                            .then(newRes => {
+                                let destinationObject = {
+                                    id: res.data._id,
+                                    address: res.data.name,
+                                    name: res.data.name,
+                                    lat: newRes.data.results[0].geometry.location.lat,
+                                    lng: newRes.data.results[0].geometry.location.lng,
+                                    cars: res.data.cars
+                                };
 
-                               this.setState({
-                                   destination: destinationObject,
-                                   isLoading: true
-                               });
-                           });
+                                this.setState({
+                                    destination: destinationObject,
+                                    isLoading: true
+                                });
+                            });
                     })
             }).catch((error) => {
                 this.setState({ errorMessage: error.response.data.message });

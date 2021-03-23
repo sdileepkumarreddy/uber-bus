@@ -43,7 +43,7 @@ class MyBookingPage extends Component {
                     destinationArray.push(destinationObject);
 
                     this.setState({ locations: locationArray });
-                    this.setState({destinations: destinationArray});
+                    this.setState({ destinations: destinationArray });
                 });
             }).catch((error) => {
                 this.setState({ errorMessage: error.response.data.message });
