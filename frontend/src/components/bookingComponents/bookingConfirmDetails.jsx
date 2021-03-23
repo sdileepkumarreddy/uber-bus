@@ -223,5 +223,5 @@ class BookingConfirmDetailsPopUp extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: "AIzaSyA3zmyzgLeXyyI_NcodNUKfvDlQ9aebarI"
+    apiKey: ""
 })(BookingConfirmDetailsPopUp);

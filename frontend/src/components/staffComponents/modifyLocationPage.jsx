@@ -36,7 +36,7 @@ class modifyLocationPage extends Component {
         // initialise address autocomplete api
         window.initMap = this.initMap;
         const gmapScriptEl = document.createElement(`script`);
-        gmapScriptEl.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA3zmyzgLeXyyI_NcodNUKfvDlQ9aebarI&libraries=places&callback=initMap`;
+        gmapScriptEl.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA3zmyzgL_NcodNUKfvDlQ9aebarI&libraries=places&callback=initMap`;
         document.querySelector(`body`).insertAdjacentElement(`beforeend`, gmapScriptEl);
         LocationServiceApi.getLocationFromId(this.props.match.params.id).then(res => {
             this.setState({

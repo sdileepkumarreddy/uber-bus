@@ -18,7 +18,7 @@ class LocationServiceApi {
 
     getGeocodeFromAddress(address) {
         const url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-        const api_key = "AIzaSyA3zmyzgLeXyyI_NcodNUKfvDlQ9aebarI";
+        const api_key = "";
         const formatted_address = address.replace(/ /g, "+");
         const key_input = "&key="
         // create new axios instance without auth token for third party API
