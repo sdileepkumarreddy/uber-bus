@@ -27,7 +27,7 @@ app.use(logger('dev'));
 
 // Parser and set file upload limit
 app.use(parser.urlencoded({ limit: '4mb', extended: true }));
-app.use(parser.json({ limit: '4mb' }));
+app.use(parser.json({limit: '4mb'}));
 
 // CORS Handling
 app.use((req, res, next) => {

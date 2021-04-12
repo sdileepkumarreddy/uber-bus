@@ -13,7 +13,7 @@ class BookingConfirmDetailsPopUp extends Component {
         this.state = {
             errorMessage: '',
             location: {},
-            destination: '',
+            destination:'',
             destinations: [],
             activeMarker: {},
             showingInfoWindow: false,
@@ -102,7 +102,7 @@ class BookingConfirmDetailsPopUp extends Component {
                 destinationArray.push(locationObject);
             });
             defaultDestination = destinationArray[0].id;
-            this.setState({ destination: defaultDestination });
+            this.setState({destination: defaultDestination});
         });
     }
 
@@ -206,13 +206,13 @@ class BookingConfirmDetailsPopUp extends Component {
             <Container>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Destination</Form.Label>
-                    <Form.Control name="destination" as="select" onChange={this.handleChange}>
-
-                        {this.state.destinations.map(destination =>
-                            <>
-                                <option value={destination.id} defaultValue={destination.id}>{destination.name + " @ " + destination.address}</option>
-                            </>
-                        )}
+                    <Form.Control name="destination" as="select"  onChange={this.handleChange}>
+                           
+                            {this.state.destinations.map(destination =>
+                                <>
+                                    <option value={destination.id} defaultValue={destination.id}>{destination.name + " @ " + destination.address}</option>
+                                </>
+                            )}
                     </Form.Control>
                 </Form.Group>
             </Container>

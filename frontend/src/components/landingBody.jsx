@@ -12,7 +12,7 @@ const navWhenSelectedStyle = {
 };
 
 export default class landingBody extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
         this.state = {
             component: 'Overview'
@@ -30,7 +30,7 @@ export default class landingBody extends Component {
         return (
             <div id="landing-body">
                 <Nav id="landing-body-nav" className="justify-content-center" activeKey="/home">
-                    <Nav.Item onClick={this.handleClick.bind(this)} style={(component === "Overview") ? navWhenSelectedStyle : {}}>
+                    <Nav.Item onClick={this.handleClick.bind(this)} style={(component === "Overview") ? navWhenSelectedStyle : {} }>
                         <Nav.Link className="nav-link">Overview</Nav.Link>
                     </Nav.Item>
                     <Nav.Item onClick={this.handleClick.bind(this)} style={(component === "Cars") ? navWhenSelectedStyle : {}}>
@@ -46,14 +46,14 @@ export default class landingBody extends Component {
 /* Function components */
 function RenderCorrectComponents(props) {
     const { component } = props
-    switch (component) {
+    switch(component) {
         case "Overview":
-            return (<Overview />);
+            return(<Overview />);
         case "Bus":
-            return (<Cars />);
+            return(<Cars />);
         case "FAQs":
-            return (<Faqs />);
+            return(<Faqs />);
         default:
-            return (<Overview />);
+            return(<Overview />);
     }
 }

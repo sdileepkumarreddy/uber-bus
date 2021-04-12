@@ -38,14 +38,14 @@ import './App.css';
 
 class App extends Component {
   state = {
-    availableCars: [],
+    availableBuses: [],
     pickupTime: "",
     returnTime: ""
   };
 
-  updateCars(availableCars, pickupTime, returnTime) {
+  updateCars(availableBuses, pickupTime, returnTime) {
     this.setState({
-      availableCars: availableCars,
+      availableBuses: availableBuses,
       pickupTime: pickupTime,
       returnTime: returnTime
     });
@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   render() {
-    const { availableCars, pickupTime, returnTime } = this.state;
+    const { availableBuses, pickupTime, returnTime } = this.state;
     const isUserStaff = UserServiceApi.isUserStaff();
     return (
       <Router>
@@ -71,7 +71,7 @@ class App extends Component {
           <Route path="/locations" component={MapContainer} />
           {/* Customers only routes */}
           {!isUserStaff && <AuthenticatedRoute path="/filter" component={(props) => <FilterCarsPage {...props}
-            availableCars={availableCars}
+            availableBuses={availableBuses}
             pickupTime={pickupTime}
             returnTime={returnTime} />} />}
           {!isUserStaff && <AuthenticatedRoute path="/dashboard" component={(props) => <BookingDashboard {...props}
