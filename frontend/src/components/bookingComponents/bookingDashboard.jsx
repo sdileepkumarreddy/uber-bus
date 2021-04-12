@@ -258,5 +258,5 @@ class BookingDashboard extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: "AIzaSyA3zmyzgLeXyyI_NcodNUKfvDlQ9aebarI"
+    apiKey: "AIzaSyAF3TYatEpzOshnx4qtfRNuthI3j6GWUms"
 })(BookingDashboard);

@@ -25,6 +25,7 @@ export class MapContainer extends React.Component {
       data.forEach(element => {
         LocationServiceApi.getGeocodeFromAddress(element.address)
           .then(res => {
+            console.log(res);
             // Create object with address, latitude and longitude
             let object = {
               id: element._id,
@@ -97,5 +98,5 @@ export class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyA3zmyzgLeXyyI_NcodNUKfvDlQ9aebarI"
+  apiKey: "AIzaSyAF3TYatEpzOshnx4qtfRNuthI3j6GWUms"
 })(MapContainer);
