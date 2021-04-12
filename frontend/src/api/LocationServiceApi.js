@@ -1,8 +1,7 @@
 /* Location service APIs */
 import axios from 'axios';
 require('dotenv').config();
-// const api_url = process.env.REACT_APP_SERVER_URL + "/locations" || "http://localhost:3001/api/locations";
-const api_url = "http://localhost:3001/api/locations";
+const api_url = process.env.REACT_APP_SERVER_URL + "/locations" || "http://localhost:3001/api/locations";
 
 class LocationServiceApi {
     getAllLocations() {
@@ -19,7 +18,7 @@ class LocationServiceApi {
 
     getGeocodeFromAddress(address) {
         const url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-        const api_key = "AIzaSyAF3TYatEpzOshnx4qtfRNuthI3j6GWUms";
+        const api_key = "AIzaSyA3zmyzgLeXyyI_NcodNUKfvDlQ9aebarI";
         const formatted_address = address.replace(/ /g, "+");
         const key_input = "&key="
         // create new axios instance without auth token for third party API
